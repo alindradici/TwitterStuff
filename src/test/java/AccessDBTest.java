@@ -11,10 +11,13 @@ import java.util.List;
 /**
  * Created by icondor on 16/07/16.
  */
-public class AccessDBTest extends HttpServlet {
+public class AccessDBTest {
 
-    @Override
-    protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/index.html");
+    public static void main (String [] args){
+
+        System.out.println(new TweetBean().getMyId());
+        System.out.println(new TweetBean().getFriendId());
     }
 }
+
+

@@ -17,12 +17,13 @@ import java.sql.SQLException;
 @WebServlet("/login")
 public class Login extends HttpServlet {
 
+   private String name = "";
     public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         // read user and password introduced by the user in the UI
         String user = request.getParameter("u");
         String passwd = request.getParameter("p");
-
+        name=user;
 
         int userid = -1;
         try {
@@ -42,6 +43,7 @@ public class Login extends HttpServlet {
             String success = "/index.html";
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(success);
             dispatcher.forward(request, response);
+            new TweetBean().setMyId(userid);
         }
         else {
 
@@ -52,6 +54,10 @@ public class Login extends HttpServlet {
         }
 
         System.out.println("login service called...");
+        System.out.println(userid);
+    }
+    public String getName(){
+        return name;
     }
 
 }

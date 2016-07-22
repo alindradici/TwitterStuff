@@ -72,7 +72,7 @@ public class TweetServlet extends HttpServlet {
     }
 
     /**/
-    private void returnJsonResponse(HttpServletResponse response, String jsonResponse) {
+    public void returnJsonResponse(HttpServletResponse response, String jsonResponse) {
         response.setContentType("application/json");
         PrintWriter pr = null;
         try {

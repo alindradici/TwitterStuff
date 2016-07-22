@@ -82,6 +82,13 @@ function loadUsrFeed() {
         listUsrFeed(response.myFeed);
     });
 }
+function button(){
+    var word = 'true';
+    xmlHttp = new XMLHttpRequest();
+    var url ="button"+"?buttonVal="+word
+    xmlHttp.open("GET",url,true);
+    xmlHttp.send();
+}
 
 
 

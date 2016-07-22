@@ -13,13 +13,15 @@ import java.sql.SQLException;
 @WebServlet("/cautare")
 public class UserServlet extends HttpServlet {
 
+    private String name ="";
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // read user and password introduced by the user in the UI
         String user = request.getParameter("u");
         System.out.println("*****userul e :" + user);
+        name=user;
 
-        int userid = -1;
+         int userid = -1;
         try {
             userid = AccessDB.isUser(user);
         } catch (ClassNotFoundException e) {
@@ -36,6 +38,7 @@ public class UserServlet extends HttpServlet {
             String success = "/user.html";
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(success);
             dispatcher.forward(request, response);
+            new TweetBean().setFriendId(userid);
         }
         else {
 
@@ -46,6 +49,11 @@ public class UserServlet extends HttpServlet {
         }
 
         System.out.println("login service called...");
+        System.out.println(userid);
     }
+    public String getName(){
+        return name;
     }
+
+}
 

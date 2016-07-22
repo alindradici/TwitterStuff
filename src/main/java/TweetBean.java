@@ -40,4 +40,23 @@ public class TweetBean {
     private long idUser;
     private String content;
     private Date insertDate;
+
+    public long getFriendId() {
+        return friendId;
+    }
+
+    public void setFriendId(long friendId) {
+        this.friendId = friendId;
+    }
+
+    public long getMyId() {
+        return myId;
+    }
+
+    public void setMyId(long myId) {
+        this.myId = myId;
+    }
+
+    private long myId;
+    private long friendId;
 }
