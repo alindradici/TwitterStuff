@@ -90,6 +90,29 @@ function button(){
     xmlHttp.send();
 }
 
+function listTweetsFeed(feeds) { // feeds means all rows in the db
+    var myFeedHTML = document.getElementById('userTweetFeed')
+    var listHtml = ''; // a temporary to store the content
+
+    for (var i = 0; i < feeds.length; i++) {
+        var feed = feeds[i]; // one row in db
+        var oneHTMLRow =
+            '<h2>' +
+            feed.content+'   '+
+            feed.insertDate+
+            '</h2>';
+        listHtml += oneHTMLRow;
+    }
+    myFeedHTML.innerHTML = listHtml;
+}
+
+function loadTweets() {
+    $.ajax({
+        url: 'caut'
+    }).done(function (response) {
+        listFeed(response.myFeed);
+    });
+}
 
 
 

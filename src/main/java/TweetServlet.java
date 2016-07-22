@@ -72,16 +72,17 @@ public class TweetServlet extends HttpServlet {
     }
 
     /**/
-    public void returnJsonResponse(HttpServletResponse response, String jsonResponse) {
-        response.setContentType("application/json");
-        PrintWriter pr = null;
-        try {
-            pr = response.getWriter();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        assert pr != null;
-        pr.write(jsonResponse);
-        pr.close();
+
+     public void returnJsonResponse(HttpServletResponse response, String jsonResponse) {
+    response.setContentType("application/json");
+    PrintWriter pr = null;
+    try {
+        pr = response.getWriter();
+    } catch (IOException e) {
+        e.printStackTrace();
     }
+    assert pr != null;
+    pr.write(jsonResponse);
+    pr.close();
+}
 }
