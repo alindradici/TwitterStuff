@@ -1,47 +1,20 @@
 import org.junit.Test;
 
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.List;
 
 /**
  * Created by icondor on 16/07/16.
  */
-public class AccessDBTest {
+public class AccessDBTest extends HttpServlet {
 
-    public static void main(String[] argv) {
-        try {
-
-            List l = AccessDB.readTweets();
-            l.forEach((temp) -> {
-                TweetBean tb = (TweetBean) temp;
-                System.out.println(tb.getContent());
-
-            });
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-
-    }
-
-
-    @Test
-    public void testAddTweet() throws Exception {
-
-    }
-
-    @Test
-    public void testReadTweets() throws Exception {
-
-    }
-
-    @Test
-    public void testIsUserInDB() throws Exception {
-
-    }
-
-    @Test
-    public void testReadMyFriends() throws Exception {
-
+    @Override
+    protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/index.html");
     }
 }

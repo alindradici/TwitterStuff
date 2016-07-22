@@ -1,40 +1,24 @@
-import javax.json.Json;
-import javax.json.JsonArrayBuilder;
-import javax.json.JsonObject;
-import javax.json.JsonObjectBuilder;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
-import java.util.List;
-import java.util.ListIterator;
 
-/**
- * Created by icondor on 16/07/16.
- */
-
-
-@WebServlet("/addtweeter")
-public class AddTweetServlet extends HttpServlet {
-
+@WebServlet("/adduser")
+public class AddNewUser extends HttpServlet {
 
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-
-        String textToTweet = req.getParameter("textToTweet");
-
-        HttpSession session = req.getSession(true);
-
-        Integer iduser = (Integer) session.getAttribute("iduser");
+        String user= req.getParameter("user");
+        String pass= req.getParameter("pass");
+        String adress=req.getParameter("adress");
 
         try {
-            AccessDB.addTweet(iduser,textToTweet);
+            AccessDB.addUser(user,pass,adress);
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (SQLException e) {
@@ -43,7 +27,6 @@ public class AddTweetServlet extends HttpServlet {
 
     }
 
-    /**/
     private void returnJsonResponse(HttpServletResponse response, String jsonResponse) {
         response.setContentType("application/json");
         PrintWriter pr = null;
@@ -56,4 +39,5 @@ public class AddTweetServlet extends HttpServlet {
         pr.write(jsonResponse);
         pr.close();
     }
+
 }

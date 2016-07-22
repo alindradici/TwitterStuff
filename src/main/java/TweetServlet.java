@@ -13,17 +13,13 @@ import java.io.PrintWriter;
 import java.util.List;
 import java.util.ListIterator;
 
-/**
- * Created by icondor on 16/07/16.
- */
 
-@WebServlet("/myfeed")
+
+@WebServlet(urlPatterns={"/usrFeed", "/myfeed"})
 public class TweetServlet extends HttpServlet {
 
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-
 
 
             HttpSession session = req.getSession(true);
@@ -46,8 +42,7 @@ public class TweetServlet extends HttpServlet {
 //
 //            });
 
-
-                // put the list in a json
+                    // put the list in a json
                 JsonObjectBuilder jObjBuilder = Json.createObjectBuilder();
                 JsonArrayBuilder jArrayBuilder = Json.createArrayBuilder();
                 for (ListIterator<TweetBean> iterator = l.listIterator(); iterator.hasNext(); ) {
@@ -55,7 +50,7 @@ public class TweetServlet extends HttpServlet {
                     jArrayBuilder.add(Json.createObjectBuilder()
                             .add("content", element.getContent())
                             .add("insertDate", element.getInsertDate().toString())
-                            .add("id", element.getId())
+                            .add("iduser", iduser)
                     );
 
                 }
